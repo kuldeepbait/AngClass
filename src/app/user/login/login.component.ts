@@ -51,6 +51,7 @@ export class LoginComponent implements OnInit {
                   this.alertService.success("User does not exist","Message");
                   return false;
                 }
+                
             },
             error =>{
               console.log('err');
@@ -58,6 +59,5 @@ export class LoginComponent implements OnInit {
           );
         }
     console.log('login submit');
-  
   }
 }
