@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from "src/app/user/service/auth.service";
+import { Router } from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -7,10 +9,10 @@ import { AuthService } from "src/app/user/service/auth.service";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'AngClass';
+  title = 'Angular Project';
   isUserLoggedIn: boolean;
-  constructor( private authService:AuthService)
+  constructor(private route: ActivatedRoute,private router: Router, private authService:AuthService)
   {
-    this.authService.LoginIdSource.subscribe(x => this.isUserLoggedIn = x);
+     this.authService.LoginIdSource.subscribe(x => this.isUserLoggedIn = x);
   }
 }

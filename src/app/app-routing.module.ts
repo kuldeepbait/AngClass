@@ -3,8 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from "src/app/app.component";
 
 const routes: Routes = [
-  {path: "", loadChildren :"./user/user.module#UserModule"},
-  {path: "home", loadChildren :"./home/home.module#HomeModule"},  
+  {path: "", loadChildren :() => import('./user/user.module').then(m => m.UserModule)},
+  {path: "home", loadChildren :() => import('./home/home.module').then(m => m.HomeModule)},  
   { path: "App", component: AppComponent, }, 
 ];
 

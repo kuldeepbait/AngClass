@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-    <a class="navbar-brand" href="#">Jarvis Support</a>
+    <a class="navbar-brand" [routerLink]='["/home"]' href="#">Angular Project</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -12,49 +12,14 @@
         </li>
         <li class="nav-item">
           <!--<a class="nav-link" [routerLink]='["contact-us"]' href="contact-us">Create Ticket</a>-->
-          <a class="nav-link" [routerLink]='["/modules"]' routerLink="modules">Create Module</a>
+          <a class="nav-link" [routerLink]='["/modules"]' routerLink="modules">Employee Management</a>
         </li>
-        <li class="nav-item">
-            <!--<a class="nav-link" [routerLink]='["contact-us"]' href="contact-us">Create Ticket</a>-->
-            <a class="nav-link" [routerLink]='["/mpages"]' routerLink="mpages">Create module page</a>
-          </li>
-          <li class="nav-item">
-            <!--<a class="nav-link" [routerLink]='["contact-us"]' href="contact-us">Create Ticket</a>-->
-            <a class="nav-link" [routerLink]='["/roles"]' routerLink="roles">Create Role</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" [routerLink]='["/user"]' routerLink="user">Create user</a>
-          </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Ticket Status</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarUsrRolModulePrgMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            User-Role Module Prog
-          </a>
-          <div class="dropdown-menu nav-item" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" routerLinkActive="active" routerLink="UserRoleModulePrg/AddUserRolModulePrg">Add</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Reports
-          </a>
-          <div class="dropdown-menu nav-item" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">Project Health</a>
-            <a class="dropdown-item" href="#">Project Status</a>
-          </div>
-        </li>
-  
       </ul>
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" >Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]='["/register"]' routerLink="register">Register</a>
-        </li>
-      </ul>
+          <li class="nav-item">
+            <a class="nav-link" (click)="LogOut()" >LogOut</a>
+          </li>
+        </ul>
     </div>
   </nav>
   

@@ -1,3 +1,21 @@
 <p>
   usermanagement works!
 </p>
+
+<div class="row">
+    <div class="col-sm-1"></div>
+<div class="col-sm-3">
+  <ag-grid-angular    
+  style="width: 600px; height: 100px;"     
+  class="ag-theme-fresh"    
+  [columnDefs]="columnDefs" 
+  [enableSorting]="true"
+  [enableFilter]="true"
+  [animateRows]="true"
+  [pagination]="true"
+  [sortingOrder]="sortingOrder"
+  (gridReady)="onGridLoad($event)"
+  > 
+</ag-grid-angular>  
+</div>
+</div>

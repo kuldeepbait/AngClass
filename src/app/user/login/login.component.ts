@@ -4,6 +4,8 @@ import { Router } from "@angular/router";
 import { AuthService } from "src/app/user/service/auth.service";
 import { User } from "src/app/user/model/user";
 import { NgForm } from "@angular/forms";
+import { ToastrService} from 'ngx-toastr';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,7 +16,9 @@ export class LoginComponent implements OnInit {
   // ModulesForm: any;
   // loginForm: FormGroup;
   constructor(private formBuilder: FormBuilder,private router: Router,
-    private authService:AuthService) 
+    private authService:AuthService
+    ,private alertService : ToastrService
+  ) 
   {
    
   }
@@ -33,19 +37,18 @@ export class LoginComponent implements OnInit {
       {
         console.log('valid');
         console.log(loginModel.value.UserId);
-          // this.user.UserId = ModulesForm.value.UserId;
-          // this.user.Password = ModulesForm.value.Password;
           console.log(loginModel.value)
           this.authService.login(loginModel.value).subscribe(
             res => {
               console.log(res);
               if(res=="LOGIN_SUCCESS")
                 {
+                  this.alertService.success("Logon Successfull","Message");
                   this.authService.SetLoggedInUserDetails(true);
                   this.router.navigate(['/home'])
                 }
                 else{
-                  alert(res);
+                  this.alertService.success("User does not exist","Message");
                   return false;
                 }
             },

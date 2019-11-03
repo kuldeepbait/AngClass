@@ -1,37 +1,96 @@
-<h2>Register</h2>
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-        <label for="firstName">First Name</label>
-        <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
-        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-            <div *ngIf="f.firstName.errors.required">First Name is required</div>
+<div class="card" style="margin:10px;">
+        <div class="card-header">
+                User Registration ! 
         </div>
-    </div>
-    <div class="form-group">
-        <label for="lastName">Last Name</label>
-        <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
-        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-            <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+        <div class="card-body">
+                <form novalidate (ngSubmit)="Register(RegisterForm)"  #RegisterForm="ngForm" autocomplete="off">
+                     <!-- Full Name  -->
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label for="fullName" class="control-label">
+                                        Full Name
+                                    </label>
+                                    <input class="form-control" id="fullName" type="text" placeholder="Enter User Id"
+                                    required [(ngModel)]=userModel.FullName name="FullName" #fullNameVar="ngModel"
+                                    [ngClass]="{'is-invalid': (fullNameVar.touched || fullNameVar.dirty) && !fullNameVar.valid }" />
+                                    <span class="invalid-feedback">
+                                        <span *ngIf="fullNameVar.errors?.required">
+                                        Please enter full name.
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>   
+                                           
+                        </div>
+                      <!-- user -->
+                      <div class="row">
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label for="userId" class="control-label">
+                                        User Id
+                                    </label>
+                                    <input class="form-control" id="userId" type="text" placeholder="Enter User Id"
+                                    required [(ngModel)]=userModel.UserId name="UserId" #UserIdVar="ngModel"
+                                    [ngClass]="{'is-invalid': (UserIdVar.touched || UserIdVar.dirty) && !UserIdVar.valid }" />
+                                    <span class="invalid-feedback">
+                                        <span *ngIf="UserIdVar.errors?.required">
+                                        Please enter user Id.
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>   
+                                           
+                        </div>
+                    <!-- password -->
+                    <div class="row">
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label for="password" class="control-label">
+                                       Password
+                                    </label>
+                                    <input class="form-control" id="Password" type="password" placeholder="Enter password"
+                                    required [(ngModel)]=userModel.Password name="Password" #passwordVar="ngModel"
+                                    [ngClass]="{'is-invalid': (passwordVar.touched || passwordVar.dirty) && !passwordVar.valid }" />
+                                    <span class="invalid-feedback">
+                                        <span *ngIf="passwordVar.errors?.required">
+                                        Please enter password.
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>                   
+                    </div>
+                     <!-- email -->
+                     <div class="row">
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label for="Email" class="control-label">
+                                       Email
+                                    </label>
+                                    <input class="form-control" id="Email" type="text" placeholder="Enter Email"
+                                    required [(ngModel)]=userModel.Email name="Email" #emaildVar="ngModel"
+                                    pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                                    [ngClass]="{'is-invalid': (emaildVar.touched || emaildVar.dirty) && !emaildVar.valid }" />
+                                    <span class="invalid-feedback">
+                                        <span *ngIf="emaildVar.errors?.required">
+                                            Please enter email.
+                                        </span>
+                                         <span *ngIf="emaildVar.errors?.pattern">
+                                            Please enter a valid email.
+                                        </span> 
+                                    </span>
+                                </div>
+                            </div>                   
+                    </div>
+                       <!-- submit button -->
+                    <div class="row">
+                            <div class="col-sm-3">
+                                <button class="btn btn-primary mr-3" type="submit" style="width:90px;margin-top: 33px;"  [disabled]="!RegisterForm.valid">Register</button>
+                                <a routerLink="/login" class="btn btn-primary mr-3" style="width:80px;margin-top: 33px;">Cancel</a>
+                            </div>
+                            <div class="col-sm-10">      
+                            </div>
+                    </div>
+                </form>
         </div>
-    </div>
-    <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-            <div *ngIf="f.username.errors.required">Username is required</div>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-            <div *ngIf="f.password.errors.required">Password is required</div>
-            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
-        </div>
-    </div>
-    <div class="form-group">
-        <button [disabled]="loading" class="btn btn-primary">Register</button>
-        <img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-        <a routerLink="/login" class="btn btn-link">Cancel</a>
-    </div>
-</form>
+</div>

@@ -8,13 +8,15 @@ import { UserRoutingModule } from './user-routing.module';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { UsermanagementComponent } from './usermanagement/usermanagement.component';
+import { AgGridModule } from 'ag-grid-angular'; 
 
 @NgModule({
   declarations: [LoginComponent, RegisterComponent, UsermanagementComponent],
   imports: [
     CommonModule,
     FormsModule,ReactiveFormsModule,
-    UserRoutingModule
+    UserRoutingModule,
+    AgGridModule.withComponents([UsermanagementComponent]),
   ]
 })
 export class UserModule { }
