@@ -1,0 +1,33 @@
+<p>employeemanage works!</p>
+<div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+    <table border="0" class="table table-hover table-bordered table-sm" *ngIf='listEmployee && listEmployee.length'>
+        <thead>
+        <tr ngclass="btn-primary" style="background-color:steelblue;color:white;height:4px;">
+            <th class="tbl2">EmpName</th>
+            <th class="tbl2">EmpSalary</th>
+            <th class="tbl2">Gender </th>
+            <th class="tbl2">Email </th>
+            <th class="tbl2">Doj</th>
+            <th class="tbl2">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of listEmployee" style="height:4px;">
+          <td class="tbl2">{{item.EmpName }}</td>
+          <td class="tbl2">{{item.EmpSalary }}</td>
+          <td class="tbl2">{{item.Gender}}</td>
+          <td class="tbl2">{{item.Email}}</td>
+          <td class="tbl2">{{item.Doj}}</td>
+          <td class="tbl2">
+            <button type="button" class="btn btn-info btn-md" style="font-size:x-small;margin-right:10px;" matTooltip="Click Edit Button" (click)="EditGridRow(item.EmpId)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-danger btn-md" style="font-size:x-small"   matTooltip="Click Delete Button" (click)="deleteGridRow(item.EmpId)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+          </td>
+        </tr>
+      </tbody>
+      </table>
+
+    </div>
+    <div class="col-md-2"></div>
+</div>

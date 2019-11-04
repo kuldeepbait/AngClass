@@ -5,6 +5,7 @@ import { AppComponent } from "src/app/app.component";
 const routes: Routes = [
   {path: "", loadChildren :() => import('./user/user.module').then(m => m.UserModule)},
   {path: "home", loadChildren :() => import('./home/home.module').then(m => m.HomeModule)},  
+  {path: "employee", loadChildren :() => import('./employee/employee.module').then(m => m.EmployeeModule)},  
   { path: "App", component: AppComponent, }, 
 ];
 
